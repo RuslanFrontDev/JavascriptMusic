@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-[#181028] flex items-center justify-center min-h-screen">
+   <div class="bg-white text-[#181028] p-8  shadow-lg rounded-xl w-full max-w-md ">
+      <header class="text-center">
+         <p>PLAYING NOW</p>
+         <h1 id="title" class="font-bold text-lg"></h1>
+         <small id="artist">+_</small>
+      </header>
+      <img id="thumbnail" class="w-60 shadow-lg aspect-square object-cover mx-auto my-8"
+         
+         alt="unsplash">
+      <div>
+         <progress class="w-full h-1.5 rounded-lg bg-black" id="progress" value="0" max="100">32%</progress>
+         <div class="flex items-center justify-between">
+            <small id="current-time">0:00</small>
+            <small id="total-time" class="ml-auto">0:00</small>
+         </div>
+         <div class="flex justify-center text-gray-500 gap-2 my-6">
+            <button id="repeat" class="hover:text-gray-900"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-repeat-once" width="24"
+                  height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M4 12v-3a3 3 0 0 1 3 -3h13m-3 -3l3 3l-3 3"></path>
+                  <path d="M20 12v3a3 3 0 0 1 -3 3h-13m3 3l-3 -3l3 -3"></path>
+                  <path d="M11 11l1 -1v4"></path>
+               </svg>
+            </button>
+            <button id="prev"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-left" width="24"
+                  height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M15 6l-6 6l6 6"></path>
+               </svg>
+            </button>
+            <button id="toggle" class="group border rounded-full w-12 h-12 flex items-center justify-center border-gray-500"><svg xmlns="http://www.w3.org/2000/svg" class="group-[.play]:hidden"
+                  width="24" height="24"  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z"
+                     stroke-width="0" fill="currentColor"></path>
+               </svg>
+
+               <svg xmlns="http://www.w3.org/2000/svg" class="hidden group-[.play]:block"
+                  width="24" height="24"  viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M9 4h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2z"
+                     stroke-width="0" fill="currentColor"></path>
+                  <path d="M17 4h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2z"
+                     stroke-width="0" fill="currentColor"></path>
+               </svg>
+            </button>
+            <button id="next">
+               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-right" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M9 6l6 6l-6 6" />
+                </svg>
+            </button>
+            <button id="shuffle" class="hover:text-gray-900"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrows-shuffle-2"
+                  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                  <path d="M18 4l3 3l-3 3"></path>
+                  <path d="M18 20l3 -3l-3 -3"></path>
+                  <path d="M3 7h3a5 5 0 0 1 5 5a5 5 0 0 0 5 5h5"></path>
+                  <path d="M3 17h3a5 5 0 0 0 5 -5a5 5 0 0 1 5 -5h5"></path>
+               </svg>
+            </button>
+         </div>
+         <ul id="playlist" class="space-y-2">
+            <!-- <li>
+               <button class=" py-2 hover:font-bold flex justify-between w-full">
+                  Song Title
+                  <span>3:37</span>
+               </button>
+            </li> -->
+         </ul>
+      </div>
+      <!-- <audio controls src="https://raw.githubusercontent.com/florinpop17/stream-songs/master/ambient.mp3"></audio>
+      <audio controls src="https://raw.githubusercontent.com/florinpop17/stream-songs/master/garage.mp3"></audio>
+      <audio controls src="https://raw.githubusercontent.com/florinpop17/stream-songs/master/study.mp3"></audio> -->
+      <script src="index.js"></script>
+   </div>
+</body>
+
+</html>
